@@ -18,7 +18,7 @@ import {
 export const PageLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.NODE_ENV === 'production' ? '/network-v-2.0' : '/'}>
       <Layout>
         <SiderLayout collapsed={collapsed} setCollapsed={setCollapsed} />
         <Layout>
