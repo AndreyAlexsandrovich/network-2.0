@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/network-v-2.0/static/js/main.5f71c0d8.js",
-    "index.html": "/network-v-2.0/index.html",
-    "main.5f71c0d8.js.map": "/network-v-2.0/static/js/main.5f71c0d8.js.map"
+    "main.js": "/network-2.0/static/js/main.5f71c0d8.js",
+    "index.html": "/network-2.0/index.html",
+    "main.5f71c0d8.js.map": "/network-2.0/static/js/main.5f71c0d8.js.map"
   },
   "entrypoints": [
     "static/js/main.5f71c0d8.js"
