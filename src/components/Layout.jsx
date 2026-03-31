@@ -9,16 +9,13 @@ import { Cart } from './pages/Cart/cart';
 import { Settings } from './pages/Settings/settings';
 import { News } from './pages/News/news';
 import { Products } from './pages/Products/products'
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 export const PageLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
   return (
-    <BrowserRouter basename={process.env.NODE_ENV === 'production' ? '/network-v-2.0' : '/'}>
+    <Router basename={process.env.NODE_ENV === 'production' ? '/network-v-2.0' : '/'}>
       <Layout>
         <SiderLayout collapsed={collapsed} setCollapsed={setCollapsed} />
         <Layout>
@@ -29,11 +26,11 @@ export const PageLayout = () => {
               <Route path='/cart' element={<Cart />} />
               <Route path='/settings' element={<Settings />} />
               <Route path='/news' element={<News />} />
-              <Route path='/products' element={<Products />} />
+              <Route path='/' element={<Products />} />
             </Routes>
           </ContentLayout>
         </Layout>
       </Layout>
-    </BrowserRouter>
+    </Router>
   )
 }
