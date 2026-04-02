@@ -15,7 +15,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 export const PageLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
   return (
-    <Router basename='/network-2.0/'>
+    <Router>
       <Layout>
         <SiderLayout collapsed={collapsed} setCollapsed={setCollapsed} />
         <Layout>
