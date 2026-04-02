@@ -8,7 +8,8 @@ import { Profile } from './pages/Profile/profile';
 import { Cart } from './pages/Cart/cart';
 import { Settings } from './pages/Settings/settings';
 import { News } from './pages/News/news';
-import { Products } from './pages/Products/products'
+import { Products } from './pages/Products/products';
+import { dataProducts } from './products'
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 
@@ -26,7 +27,7 @@ export const PageLayout = () => {
               <Route path='/cart' element={<Cart />} />
               <Route path='/settings' element={<Settings />} />
               <Route path='/news' element={<News />} />
-              <Route path='/' element={<Products />} />
+              <Route path='/products' element={<Products dataProducts={dataProducts}/>} />
             </Routes>
           </ContentLayout>
         </Layout>
