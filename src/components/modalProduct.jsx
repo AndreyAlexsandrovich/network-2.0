@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Flex, Modal, Button } from 'antd';
-export const ModalProduct = ({ isOpen, onClose, selectedProduct }) => {
-    if (!isOpen || !selectedProduct) return null;
-
+import { FetchProducts } from './products'
+export const ModalProduct = ({ isOpen, onClose, selectedProduct  }) => {
+    if (!isOpen || !FetchProducts) return null;
     return (
         <Flex vertical gap="medium" align="flex-start">
             <Modal
-                title={selectedProduct.name}
+                title={FetchProducts.title}
                 centered
                 open={isOpen}
                 onOk={onClose}
@@ -20,17 +20,18 @@ export const ModalProduct = ({ isOpen, onClose, selectedProduct }) => {
                     xxl: '40%',
                 }}
                 footer={[
-                    <Button key="back" onClick={onClose}>Закрыть</Button>
+                    <Button key="back" onClick={onClose}>Закрыть</Button>,
+                    <Button key="back">Добавить в избранное</Button>
                 ]}
             >
                 <img
-                    src={selectedProduct.src}
-                    alt={selectedProduct.name}
+                    src={selectedProduct.thumbnail}
+                    alt={selectedProduct.title}
                     style={{ width: '100%', height: 300, objectFit: 'cover', marginBottom: 16 }}
                 />
-                <h2>{selectedProduct.name}</h2>
+                <h2>{selectedProduct.title}</h2>
                 <p><strong>Описание:</strong> {selectedProduct.description}</p>
-                <p><strong>Цена:</strong> {selectedProduct.price}</p>
+                <p><strong>Цена:</strong> {selectedProduct.price}$</p>
             </Modal>
         </Flex >
     )

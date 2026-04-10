@@ -9,7 +9,7 @@ import { Cart } from './pages/Cart/cart';
 import { Settings } from './pages/Settings/settings';
 import { News } from './pages/News/news';
 import { Products } from './pages/Products/products';
-import { dataProducts } from './products'
+import { FetchProducts } from './products'
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 
@@ -27,7 +27,7 @@ export const PageLayout = () => {
               <Route path='/cart' element={<Cart />} />
               <Route path='/settings' element={<Settings />} />
               <Route path='/news' element={<News />} />
-              <Route path='/products' element={<Products dataProducts={dataProducts}/>} />
+              <Route path='/products' element={<Products dataProducts={FetchProducts}/>} />
             </Routes>
           </ContentLayout>
         </Layout>

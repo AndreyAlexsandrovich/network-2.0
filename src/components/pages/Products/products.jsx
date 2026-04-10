@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { dataExpandedProducts } from '../../products';
+import React, { useState, useEffect } from 'react';
 import { Card } from 'antd';
 import { ModalProduct } from '../../modalProduct';
+import { FetchProducts } from '../../products'
 const { Meta } = Card;
 
 const list = {
@@ -23,16 +23,22 @@ const product = {
 }
 
 
-export const Products = ({ dataProducts }) => {
+export const Products = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
-    if (!dataProducts || dataProducts.length === 0) {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        FetchProducts().then(setProducts);
+    }, []);
+
+    if (!products || products.length === 0) {
         return (
             <h1 style={{ textAlign: 'center', color: 'red', textDecoration: 'underline' }}>Ошибка. Товары не найдены</h1>
         )
     }
     return (
         <ul style={list}>
-            {dataProducts.map((data) => (
+            {products.map((data) => (
                 <li style={product} key={data.id}>
                     <Card
                         onClick={() => setSelectedProduct(data)}
@@ -48,11 +54,11 @@ export const Products = ({ dataProducts }) => {
                                 style={{ maxWidth: '100%' }}
                                 draggable={false}
                                 alt="example"
-                                src={data.src}
+                                src={data.thumbnail}
                             />
                         }
                     >
-                        <Meta title={data.name ? data.name : <h1 style={{ fontSize: 16, fontWeight: 500 }}>У товара нету названия</h1>} description={data.price} />
+                        <Meta title={data.title ? data.title : <h1 style={{ fontSize: 16, fontWeight: 500 }}>У товара нету названия</h1>} description={data.price} />
                     </Card>
                 </li>
             ))}
